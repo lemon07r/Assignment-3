@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="retro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lego Collection</title>
+    <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body tabindex="-1">
+    <nav class="navbar bg-base-100">
+        <div class="flex-1">
+            <a class="btn btn-ghost normal-case text-xl" href="/">Lego Collection</a>
+        </div>
+        <div class="dropdown">
+            <label tabindex="0" class="btn btn-ghost sm:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </label>
+            <ul tabindex="0"
+                class="menu menu-sm dropdown-content right-0 mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                <li><a href="/about">About</a></li>
+                <li>
+                    <details>
+                        <summary>
+                            Theme
+                        </summary>
+                        <ul class="p-2 bg-base-100">
+                            <li><a href="/lego/sets?theme=Technic">Technic</a></li>
+                            <li><a href="/lego/sets?theme=Supplemental">Supplemental</a></li>
+                            <li><a href="/lego/sets?theme=Books">Books</a></li>
+                        </ul>
+                    </details>
+                </li>
+            </ul>
+        </div>
+
+        <div class="navbar-center hidden sm:flex">
+            <ul class="menu menu-horizontal px-1">
+                <li><a href="/about">About</a></li>
+                <li>
+                    <details>
+                        <summary>Theme</summary>
+                        <ul class="p-2 bg-base-100 right-0">
+                            <li><a href="/lego/sets?theme=Technic">Technic</a></li>
+                            <li><a href="/lego/sets?theme=Supplemental">Supplemental</a></li>
+                            <li><a href="/lego/sets?theme=Books">Books</a></li>
+                        </ul>
+                    </details>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="container mx-auto">
+        <div class="hero min-h-screen bg-base-200">
+            <div class="hero-content flex-col lg:flex-row-reverse">
+                <img src="https://i.pinimg.com/originals/dd/c9/71/ddc9717c352686f5c7495bfdfd1c065b.jpg"
+                    class="max-w-sm rounded-lg shadow-2xl" alt="spooderman" />
+                <div>
+                    <h1 class="text-5xl font-bold">About Me</h1>
+                    <p class="py-6">Hi I'm Lamim. I enjoy exploring new things, and learning whatever I can. My
+                        interests lie in things like software development, reading, basketball, etc. Checkout my GitHub
+                        repos in the link below!</p>
+                    <button class="btn btn-primary"><a href="https://github.com/lemon07r">My Github</a></button>
+                </div>
+            </div>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-4">
+                <img src="https://qph.cf2.quoracdn.net/main-qimg-bbf004b8fc0f22fccf44d9a6750e50b8-lq" alt="spoodervenom" class="rounded-lg" />
+            
+            <div class="card w-100 bg-base-100 shadow-xl">
+                <div class="card-body prose">
+                    <h2 class="card-title">Hobbies</h2>
+                    <p>
+                        Reading - I enjoy reading Fantasy books but also media like Manwha and Manga sometimes.
+                    </p>
+                    <p>
+                        Basketball - I enjoy watching basketball, I'm a big Raptors fan.
+                    </p>
+                    <p>
+                        Programming - I enjoy learning all sorts of tech in the software development field, things like
+                        Svelte, .net, Java, etc.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+</body>
+
+</html>
