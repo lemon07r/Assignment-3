@@ -40,20 +40,28 @@ app.use((req, res, next) => {
 });
 
 app.get("/lego/sets", async (req, res) => {
+  const theme = req.query.theme;
   try {
-    const set = await legoData.getAllSets();
-    res.send(set);
+    if (theme) {
+      const set = await legoData.getAllSets(theme);
+      res.json(set);
+    }
+    else {
+      const set = await legoData.getAllSets();
+      res.json(set);
+    }
   } catch (err) {
-    res.send(err);
+    res.status(404).send(err + ' 404 failed to get sets.');
   }
 });
 
-app.get("/lego/sets/num-demo", async (req, res) => {
+app.get("/lego/sets/id-demo", async (req, res) => {
+  const setID = req.params['id-demo'];
   try {
-    const set = await legoData.getSetsByNum("001-1");
-    res.send(set);
+    const set = await legoData.getSetsByID(setID);
+    res.json(set);
   } catch (err) {
-    res.send(err);
+    res.status(404).send(err + ' 404 failed to get set.');
   }
 });
 

@@ -47,9 +47,9 @@ function initalize() {
     });
   }
   
-  function getSetsByNum(setNum) {
+  function getSetsByID(setID) {
     return new Promise((resolve, reject) => {
-      const foundSet = sets.find((set) => set.set_num === setNum);
+      const foundSet = sets.find((set) => set.set_ID === setID);
       if (!foundSet) {
         reject("Set not found");
       } else {
@@ -69,5 +69,5 @@ function initalize() {
     });
   }
   
-  module.exports = { getAllSets, getSetsByNum, getSetsByTheme, initalize };
+  module.exports = { getAllSets, getSetsByID, getSetsByTheme, initalize };
   
