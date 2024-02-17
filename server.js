@@ -55,7 +55,7 @@ app.get("/lego/sets", async (req, res) => {
   }
 });
 
-app.get("/lego/sets/id-demo", async (req, res) => {
+app.get("/lego/sets/:id-demo", async (req, res) => {
   const setID = req.params['id-demo'];
   try {
     const set = await legoData.getSetsByID(setID);
