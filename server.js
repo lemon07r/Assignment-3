@@ -1,14 +1,14 @@
 /******************************************************************************** 
-*  WEB322 – Assignment 03 
+*  WEB322 – Assignment 034
 *  
 *  I declare that this assignment is my own work in accordance with Seneca's 
 *  Academic Integrity Policy: 
 *  
 *  https://www.senecacollege.ca/about/policies/academic-integrity-policy.html 
 *  
-*  Name: Lamim Rashid       Student ID: 017156142       Date: 2/16/2024 
+*  Name: Lamim Rashid       Student ID: 017156142       Date: 03/02/2024 
 * 
-*  Published URL: ___________________________________________________________
+*  Published URL: https://inquisitive-cyan-slippers.cyclic.app
 *
 ********************************************************************************/
 
@@ -22,21 +22,23 @@ const port = 3000;
 
 const name = "Lamim Rashid"
 const studentID = "017156142"
-const assignNum = "3";
+const assignNum = "4";
+
+app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
 
 app.get("/", (req, res) => {
   console.log(`Assignment ${assignNum}:  ${name} - ${studentID}`);
-  res.sendFile(path.join(__dirname, "/views/home.html"))
+  res.render('home');
 });
 
 app.get("/about", (req, res) => {
-  res.sendFile(path.join(__dirname, "/views/about.html"))
+  res.render('about');
 });
 
 app.use((req, res, next) => {
-  res.status(404).sendFile(path.join(__dirname, "/views/404.html"));
+  res.status(404).render('404');
 });
 
 app.get("/lego/sets", async (req, res) => {
@@ -44,11 +46,11 @@ app.get("/lego/sets", async (req, res) => {
   try {
     if (theme) {
       const set = await legoData.getAllSets(theme);
-      res.json(set);
+      res.render("sets", { sets: set });
     }
     else {
       const set = await legoData.getAllSets();
-      res.json(set);
+      res.render("sets", { sets: set });
     }
   } catch (err) {
     res.status(404).send(err + ' 404 failed to get sets.');
@@ -64,7 +66,6 @@ app.get("/lego/sets/:id-demo", async (req, res) => {
     res.status(404).send(err + ' 404 failed to get set.');
   }
 });
-
 
 legoData.initalize();
 
