@@ -37,9 +37,16 @@ app.get("/about", (req, res) => {
   res.render('about');
 });
 
-app.use((req, res, next) => {
-  res.status(404).render('404');
+app.get("/lego/sets/:id", async (req, res) => {
+  const setID = req.params['id'];
+  try {
+    const set = await legoData.getSetsByID(setID);
+    res.render("set", { sets: set });
+  } catch (err) {
+    res.status(404).send(err + ' 404 failed to get set ' + setID + '.');
+  }
 });
+
 
 app.get("/lego/sets", async (req, res) => {
   const theme = req.query.theme;
@@ -57,14 +64,8 @@ app.get("/lego/sets", async (req, res) => {
   }
 });
 
-app.get("/lego/sets/:id-demo", async (req, res) => {
-  const setID = req.params['id-demo'];
-  try {
-    const set = await legoData.getSetsByID(setID);
-    res.json(set);
-  } catch (err) {
-    res.status(404).send(err + ' 404 failed to get set.');
-  }
+app.use((req, res, next) => {
+  res.status(404).render('404');
 });
 
 legoData.initalize();

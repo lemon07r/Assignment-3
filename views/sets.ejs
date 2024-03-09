@@ -13,14 +13,70 @@
 
   <section class="container mx-auto">
     <div class="hero min-h-screen bg-base-200">
-      <div class="hero-content flex-col lg:flex-row">
-        <img src="https://www.wbnq.com/wp-content/uploads/sites/377/2016/10/13649193723_0881c78ec7_z.jpg" class="max-w-sm rounded-lg shadow-2xl" />
-        <div>
+      <div class="hero-content text-center">
+        <div class="max-w-md">
           <h1 class="text-5xl font-bold">Collection</h1>
-          <p class="py-6">test</p>
+          <br>
+          <p>Select a theme:</p>
+          <ul>
+            <li><button class="btn btn-ghost btn-xs"><a href="/lego/sets?theme=technic">- Technic</a></button></li>
+            <li><button class="btn btn-ghost btn-xs"><a href="/lego/sets?theme=supplemental">- Supplemental</a></button></li>
+            <li><button class="btn btn-ghost btn-xs"><a href="/lego/sets?theme=books">- Books</a></button></li>
+          </ul>
+          <br>
           <button class="btn btn-primary"><a href="/">Go Home</a></button>
         </div>
       </div>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="table">
+        <!-- head -->
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Theme</th>
+            <th>Year</th>
+            <th>Parts</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (const legoSet of sets){ %>
+          <tr>
+            <td>
+              <div class="flex items-center gap-3">
+                <div class="avatar">
+                  <div class="mask mask-squircle w-12 h-12">
+                    <img src="<%= legoSet.img_url %>" alt="Lego Set Avatar" />
+                  </div>
+                </div>
+                <div>
+                  <div class="font-bold"><%= legoSet.name %></div>
+                  <div>Set#: <%= legoSet.set_num %></div>
+                </div>
+              </div>
+            </td>
+
+            <td><button class="btn btn-ghost btn-xs"><a href="/lego/sets?theme=<%= legoSet.theme %>"><%= legoSet.theme %></a></button></td>
+            <td><%= legoSet.year %></td>
+            <td><%= legoSet.num_parts %></td>
+            <td><button class="btn btn-ghost btn-xs"><a href="/lego/sets/<%= legoSet.set_num %>">Details</a></button></td>
+          </tr>
+          <% } %>
+          <!-- end of for loop -->
+
+          <!-- foot -->
+        <tfoot>
+          <tr>
+            <th>Name</th>
+            <th>Theme</th>
+            <th>Year</th>
+            <th>Parts</th>
+            <th></th>
+          </tr>
+        </tfoot>
+
+      </table>
     </div>
   </section>
 
